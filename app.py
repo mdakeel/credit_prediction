@@ -57,7 +57,7 @@ def home():
         prediction = model.predict(X_processed)[0]
     return render_template('form.html', top_features = top_features, prediction= prediction)
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/batch_predict', methods=['GET', 'POST'])
 def batch_predict():
     output_path = None
     if request.method == 'POST':
