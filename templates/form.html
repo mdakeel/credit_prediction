@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Creadit Predictor</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background: #fff;
+        width: 100%;
+        max-width: 360px;
+        padding: 30px 50px;
+        border-radius: 16px;
+        box-shadow: 0 6px 24px rgba(31, 38, 135, 0.15);
+        text-align: center;
+    }
+
+    h1 {
+        color: #2d3e50;
+        margin-bottom: 12px;
+        font-size: 1.8rem;
+        letter-spacing: 0.5px;
+    }
+
+    h2 {
+        color: #4e73df;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    label {
+        width: 100%;
+        text-align: left !important;
+        font-weight: 500;
+        color: #2d3e50;
+        font-size: 0.9em;
+    }
+
+    input[type='text'] {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #bfc9d9;
+        border-radius: 6px;
+        font-size: 0.95em;
+        background: #f7fafd;
+        transition: border 0.2s ease;
+    }
+
+    input[type='text']:focus {
+        border-color: #4e73df;
+        outline: none;
+    }
+
+    input[type='submit'] {
+        width: 100%;
+        background: #4e73df;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px ;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    input[type='submit']:hover {
+        background: #2e59d9;
+    }
+
+    .prediction {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #1cc88a;
+        font-weight: 600;
+    }
+
+    @media screen and (max-width: 400px) {
+        .container {
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        h2 {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <div class="container">
+        <h1>Home Credit Predictor</h1>
+        <h2>Enter Top 10 Features</h2>
+        <form action="" method="POST">
+            {% for feature in top_features %}
+                <label for="{{feature}}">{{feature.replace('_', ' ')|title}}:</label>
+                <input type="text" name="{{feature}}" required>
+            {% endfor %}
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction is not none %}
+            <div class="prediction">
+                Prediction: {{prediction}}
+            </div>
+        {% endif %}   
+    </div>
+</body>
+</html>
