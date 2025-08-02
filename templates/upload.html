@@ -32,13 +32,19 @@
             font-size: 1.2rem;
             font-weight: 400;
         }
+        form{
+            width: 1005;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
         input[type='file']{
-            margin: 18px 0 18px 0;
-            padding: 8px;
+            align-items: center;
+            padding: 10px;
             border-radius: 6px;
             border: 1px solid #bfc9d9;
             background: #f7fafd;
-            width: 100%;
+            width:auto;
         }
         input[type='submit']{
             background: #4e73df;
@@ -75,7 +81,7 @@
     <div class="container">
         <h1>Home Credit Predictor</h1>
         <h2>Enter Top 10 Features</h2>
-        <form action="/batch_predict" method="POST" enctype="multipart/form-data">
+        <form action="/batch_predict" methods="POST" enctype="multipart/form-data">
             <input type="file" name="file" accept=".csv" required>
             <input type="submit" value="Predict">
         </form>
