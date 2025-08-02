@@ -8,6 +8,11 @@ from src.pipeline.predict_pipeline import PredictPipeline
 
 app = Flask(__name__)
 
+#landing page 
+@app.route('/')
+def landing():
+    return render_template('index.html')
+
 #Load top features and means
 with open('artifacts/top_features.json') as f:
     feature_info = json.load(f)
@@ -19,7 +24,7 @@ preprocessor = MainUtils().load_object('artifacts/preprocessor.pkl')
 model = MainUtils().load_object('artifacts/model.pkl')
 all_features = preprocessor['numerical_cols'] + preprocessor["categorical_cols"]
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/form', methods=['GET', 'POST'])
 def home():
     prediction = None
     if request.method == 'POST':
@@ -52,7 +57,7 @@ def home():
         prediction = model.predict(X_processed)[0]
     return render_template('form.html', top_features = top_features, prediction= prediction)
 
-@app.route('/batch_predict', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def batch_predict():
     output_path = None
     if request.method == 'POST':
