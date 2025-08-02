@@ -115,7 +115,7 @@
     <div class="container">
         <h1>Home Credit Predictor</h1>
         <h2>Enter Top 10 Features</h2>
-        <form action="" method="POST">
+        <form action="" method="post">
             {% for feature in top_features %}
                 <label for="{{feature}}">{{feature.replace('_', ' ')|title}}:</label>
                 <input type="text" name="{{feature}}" required>
