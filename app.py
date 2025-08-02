@@ -62,7 +62,9 @@ def batch_predict():
     output_path = None
     if request.method == 'POST':
         file = request.files['file']
-        upload_dir = os.path.join('artifacts', 'predictions_artifacts')
+        # upload_dir = os.path.join('artifacts', 'predictions_artifacts')
+        upload_dir = os.path.join(os.getcwd(), 'artifacts', 'predictions_artifacts')
+
         os.makedirs(upload_dir, exist_ok=True)
         file_path = os.path.join(upload_dir, file.filename)
         file.save(file_path)
